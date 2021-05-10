@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwxNzAwOTc0fHxlbnwwfHx8fA%3D%3D&w=1000&q=80" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Welcome to SpaceX Launches</h1>
+        <p>A database of all SpaceX rocket launches</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.nasa.gov/sites/default/files/thumbnails/image/m19-037_0.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Learn about each mission in detail</h1>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.pinimg.com/originals/c0/11/54/c01154dccbc6142de93558c88c989dc2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Search for your favorite launches</h1>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br><br>
+
+<center><h1><b>Latest launches</b></h1></center>
+<div class="row">
+
+    {% for launch in launches %}
+    <div class="column">
+        <div class="card" style="width: 13rem;">
+            <a href="/launches/{{launch.id}}" 
+                class="card-link">
+            <img src={{ launch.image_url }} class="card-img-top" alt="Image not available">          
+            <div class="card-body">
+                <h1 class="card-title"><b>Mission: {{ launch.name }}</b></h1>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ launch.launch_date }}</li>
+            </ul>
+            <div class="card-body">
+                <a href="/launches/{{launch.id}}" 
+                class="card-link"
+                ><input
+                    type="submit"
+                    value="Learn More"
+                    class="btn btn-danger btn-sm"
+                    type="button"
+                /></a>
+            </div>
+        </div>
+    </div>
+      {% endfor %}
+</div>
+
+{% endblock content %}

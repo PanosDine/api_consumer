@@ -1,0 +1,50 @@
+.row {
+    padding: 5%;
+    margin:0px;
+    text-align: center;
+}
+.column {
+    padding: 3%;
+}
+
+.card-title {
+    font-size:large;
+}
+
+
+.carousel-inner {
+    height: fit-content;
+
+}
+
+.carousel-item {
+    height: fit-content;
+
+}
+
+.carousel-item-active {
+    height: fit-content;
+
+}
+
+.d-block-w-100 {
+    height:fit-content
+}
+
+footer {
+    position: fixed;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    margin-left: 2%;
+    height: 50; 
+    width: 100%;
+    text-align:left;
+    font-size: 0.8em;
+    bottom: 0;
+    font-size: 12px;
+}
+
+#copyright a + a {
+    padding-left: 1em;
+    border-width: 0px;
+}

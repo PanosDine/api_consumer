@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load embed_video_tags %}
+
+
+
+
+{% block content %}
+
+<div class = "container"> 
+<br><br>
+  <div class="row"> 
+      <div class="col-md-5">
+        <br>
+        <h3 class="card-title text-center ">{{ launch.name }}</h3>
+        <br>
+        <img class="img-fluid" src="{{ launch.image_url }}" alt="" style = "width: 90%;">
+      </div> 
+      <div class="col-md-7 shadow-lg p-3 mb-5 bg-white rounded">
+        <h1 class="my-3"><b>Mission Details</b></h1>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ launch.description }}</li>
+          <li class="list-group-item">Rocket: {{ launch.rocket }}</li>
+          <li class="list-group-item">Launch Site: {{ launch.launch_site }}</li>
+          <li class="list-group-item"><a href="{{ launch.article_url }}" class="card-link">Read the full artile</a></li>
+          <li class="list-group-item"><a href="{{ launch.wikipedia_url }}" class="card-link">Wikipedia</a></li>
+          <div class="column">
+            {% video launch.video 'small' %}
+        </div>
+        </ul>            
+      </div>                 
+  </div>              
+</div>
+    
+          
+        
+
+
+{% endblock content %}

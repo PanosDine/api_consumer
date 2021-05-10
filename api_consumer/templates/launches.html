@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   
+   <!-- Launches-->
+
+  <div class="row">
+      {% for launch in launches %}
+      <div class="column">
+      <div class="card" style="width: 13rem;">
+      <a href="/launches/{{launch.id}}" 
+              class="card-link">
+          <img src={{ launch.image_url }} class="card-img-top" alt="Image not available">          
+          <div class="card-body">
+              <h1 class="card-title"><b>Mission: {{ launch.name }}</b></h1>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{ launch.launch_date }}</li>
+          </ul>
+          <div class="card-body">
+              <a href="/launches/{{launch.id}}" 
+              class="card-link"
+              ><input
+                type="submit"
+                value="Learn More"
+                class="btn btn-danger btn-sm"
+                type="button"
+            /></a>
+          </div>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- End of Launches -->
+
+
+
+    <!-- Pagination -->
+
+    <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          {% if launches.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1" aria-label="First">
+              <span class="sr-only">1</span>
+            </a>
+          </li>
+          <li>
+            <a class="page-link" href="?page={{ launches.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>              
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ launches.number }}">{{ launches.number }}
+            </a>
+          </li>
+
+          {% if launches.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ launches.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          <li>
+            <a class="page-link" href="?page={{ launches.paginator.num_pages }}"aria-label="Last">
+              <span class="sr-only">{{ launches.paginator.num_pages }}</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      
+      <!-- End of Pagination -->
+
+{% endblock content %}
